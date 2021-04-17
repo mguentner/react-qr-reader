@@ -13,6 +13,7 @@ export const useQrReader: UseQrReaderHook = ({
   videoId,
 }) => {
   const controlsRef: MutableRefObject<IScannerControls> = useRef(null);
+  const { deviceId } = video;
 
   useEffect(() => {
     const codeReader = new BrowserQRCodeReader(null, {
@@ -47,5 +48,5 @@ export const useQrReader: UseQrReaderHook = ({
     return () => {
       controlsRef.current?.stop();
     };
-  }, []);
+  }, [deviceId]);
 };
